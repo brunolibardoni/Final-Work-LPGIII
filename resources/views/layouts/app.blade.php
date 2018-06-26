@@ -50,7 +50,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->student_name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -59,12 +59,12 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Sair') }}
                                      </a>
-                                    <a class="dropdown-item" href="/state"
+                                    <a class="dropdown-item" href="/manager"
                                     onclick="event.preventDefault();
                                                   document.getElementById('edit-form').submit();">
-                                     {{ __('Estado') }}
+                                     {{ __('asd') }}
                                     </a>
-                                    <a class="dropdown-item" href="/city"
+                                    <a class="dropdown-item" href="/manager"
                                     onclick="event.preventDefault();
                                                 document.getElementById('get-form').submit();">
                                     {{ __('Cidade') }}
@@ -73,10 +73,10 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                    <form id="edit-form" action="/state"  style="display: none;">
+                                    <form id="edit-form" action="/manager"  style="display: none;">
                                         @csrf
                                     </form>
-                                    <form id="get-form" action="/city"  style="display: none;">
+                                    <form id="get-form" action="/manager"  style="display: none;">
                                         @csrf
                                     </form>
                                 </div>

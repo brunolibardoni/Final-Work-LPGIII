@@ -21,9 +21,9 @@ class CreateUsersTable extends Migration
             $table->date('date_of_birth');
             $table->string('cpf', 11)->unique();
             $table->string('rg', 7);
-            $table->string('adress', 100);
+            $table->string('address', 100);
             $table->string('cellphone', 20);
-            $table->boolean('admin');  
+            $table->boolean('admin')->default(0);  
             $table->rememberToken();
             $table->timestamps();
         });

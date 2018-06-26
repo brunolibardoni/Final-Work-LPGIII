@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
+Route::resource('student', 'StudentController');
+
+Route::resource('course', 'CourseController');
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

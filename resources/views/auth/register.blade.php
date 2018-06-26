@@ -61,6 +61,49 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="date_of_birth" class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="date_of_birth" type="date" class="form-control" name="date_of_birth" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="cpf" class="col-md-4 col-form-label text-md-right">{{ __('CPF') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="cpf" type="text" class="form-control" name="cpf" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="rg" class="col-md-4 col-form-label text-md-right">{{ __('RG') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="rg" type="number" class="form-control" name="rg" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control" name="address" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="cellphone" class="col-md-4 col-form-label text-md-right">{{ __('Cellphone') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="cellphone" type="number" class="form-control" name="cellphone" required>
+                            </div>
+                        </div>
+
+                        
+
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
