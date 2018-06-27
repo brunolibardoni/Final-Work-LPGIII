@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Course;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
     
 class CourseController extends Controller
 {
@@ -14,9 +15,16 @@ class CourseController extends Controller
 
     public function index()
     {
+        $user = Auth::user();
+
         $course = Course::paginate(1);
 
-        return view('course/index' ,['course'=>$course]);
+        if ($user->admin) {
+            return view('admin/course/index' ,['course'=>$course]);
+        }
+        
+
+        
     }
 
     public function create()
