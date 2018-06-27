@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,11 +19,12 @@ class CourseController extends Controller
         $user = Auth::user();
 
         $course = Course::paginate(1);
+        
 
         if ($user->admin) {
             return view('admin/course/index' ,['course'=>$course]);
         }else{
-            echo'vc nao é um adm';            
+            return view('user/student/index' ,['course'=>$course]);
         }
         
 
@@ -31,7 +33,21 @@ class CourseController extends Controller
 
     public function create()
     {
-        return view('course/new');
+        $user = Auth::user();
+
+        $course = Course::paginate(1);
+
+        if ($user->admin){
+            return view('admin/course/new',['course' =>$course]);
+        }else if (($user->admin)==0){
+            $course = Course::paginate(1);
+
+            \Session::flash('status', 'You do not have permission to access New Course');
+
+            return view('user/student/index',['course' =>$course]);
+
+        }
+
 
     
     }
@@ -44,10 +60,10 @@ class CourseController extends Controller
         $p->maximum = $request->input('maximum');
         
         if ($p->save()) {
-            \Session::flash('status', 'Cidade criado com sucesso.');
+            \Session::flash('status', 'Curso criado com sucesso.');
             return redirect('/course');
         } else {
-            \Session::flash('status', 'Ocorreu um erro ao criar o Cidade.');
+            \Session::flash('status', 'Ocorreu um erro ao criar o Curso.');
             return view('course.new');
         }
     }

@@ -59,26 +59,11 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Sair') }}
                                      </a>
-                                    <a class="dropdown-item" href="/manager"
-                                    onclick="event.preventDefault();
-                                                  document.getElementById('edit-form').submit();">
-                                     {{ __('asd') }}
-                                    </a>
-                                    <a class="dropdown-item" href="/manager"
-                                    onclick="event.preventDefault();
-                                                document.getElementById('get-form').submit();">
-                                    {{ __('Cidade') }}
-                                    </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                    <form id="edit-form" action="/manager"  style="display: none;">
-                                        @csrf
-                                    </form>
-                                    <form id="get-form" action="/manager"  style="display: none;">
-                                        @csrf
-                                    </form>
+
                                 </div>
                             </li>
                         @endguest

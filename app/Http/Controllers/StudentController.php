@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
+use App\Course;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Session\Session;
     
 class StudentController extends Controller
 {
@@ -14,16 +17,22 @@ class StudentController extends Controller
 
     public function index()
     {
-        $user = User::paginate(3);
+        $user = Auth::user();
 
-        return view('student/index' ,['student'=>$user]);
+        $student = User::paginate(3);
+
+        if ($user->admin) {
+            return view('admin/student/index' ,['student'=>$student]);
+
+        }else if (($user->admin)==0){
+            
+            $course = Course::paginate(1);
+
+            \Session::flash('status', 'You do not have permission to access Student');
+            return view('user/student/index' ,['course'=>$course]);
+        }
+
+
     }
-
-    public function create()
-    {
-        return view('student/new');
-
-    }
-
 
 }

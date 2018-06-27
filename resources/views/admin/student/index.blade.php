@@ -70,6 +70,12 @@
                                 <td>{{ $u->cellphone }}</td>
                             @endforeach
                         </tr>
+                        <tr>
+                            <th>Admin</th>
+                            @foreach($student as $u)
+                                <td>{{ $u->admin }}</td>
+                            @endforeach
+                        </tr>
                         <tr>   
                             <th>Managerial</th>
                             @foreach($student as $u)

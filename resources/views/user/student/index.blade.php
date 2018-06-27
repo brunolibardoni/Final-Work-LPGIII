@@ -6,79 +6,58 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3>All Students</h3>
-                    <a href="/course" class="float-right btn btn-success">All Courses</a>
-                    <br><br><a href="/course/index" class="float-right btn btn-success">All Enrolment</a><br><br>
-
-                    
+                    <h3>All Courses</h3>
+                    <a href="/city/create" class="float-right btn btn-success">Enrollment</a><br><br>
 
                 </div>
-        
-
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success">
+                        <div class="alert alert-danger">
                             {{ session('status') }}
                         </div>
                     @endif
+                   
 
                     <table class="table">
                         <tr>
                             <th>ID</th>
-                            @foreach($student as $u)
+                            @foreach($course as $u)
                                 <td>{{ $u->id }}</td>
                                 
                             @endforeach
-
                         </tr>
 
                         <tr>
-                            <th>Student Name</th>
-                            @foreach($student as $u)
-                                <td>{{ $u->student_name }}</td>
+                            <th>Couse Name</th>
+                            @foreach($course as $u)
+                                <td>{{ $u->course_name }}</td>
                             @endforeach
                         </tr>
 
                         <tr>
-                            <th>E-mail</th>
-                            @foreach($student as $u)
-                                <td>{{ $u->email }}</td>
+                            <th>Course menu</th>
+                            @foreach($course as $u)
+                                <td>{{ $u->menu }}</td>
                             @endforeach
                         </tr>
 
                         <tr>                            
-                            <th>Date of Birth</th>
-                            @foreach($student as $u)
-                                <td>{{ $u->date_of_birth }}</td>
+                            <th>Maximum students</th>
+                            @foreach($course as $u)
+                                <td>{{ $u->maximum }}</td>
                             @endforeach
                         </tr>
-                        <tr>
-                            <th>CPF</th>
-                            @foreach($student as $u)
-                                <td>{{ $u->cpf }}</td>
-                            @endforeach
-                        </tr>
-                        <tr>    
-                            <th>RG</th>
-                            @foreach($student as $u)
-                                <td>{{ $u->rg }}</td>
-                            @endforeach
-                        </tr>    
-                        <tr>
-                            <th>Cellphone</th>
-                            @foreach($student as $u)
-                                <td>{{ $u->cellphone }}</td>
-                            @endforeach
-                        </tr>
+                        
                         <tr>   
-                            <th>Managerial</th>
-                            @foreach($student as $u)
-                                    <td><a href="/state/{{ $u->id }}/edit" class="btn btn-success">Manager</a><a href="/state/{{ $u->id }}/delete" class="btn btn-warning">User</a><a href="/state/{{ $u->id }}/delete" class="btn btn-danger">Delete</a></td>
+                            <th>Options</th>
+                            @foreach($course as $u)
+                                    <td><a href="/state/{{ $u->id }}/delete" class="btn btn-warning">Edit</a><a href="/state/{{ $u->id }}/delete" class="btn btn-danger">Delete</a></td>
                             @endforeach
-                        </tr>                   
+                        </tr> 
+
                     </table>
 
-                    {!! $student->links()!!}
+                    {!! $course->links()!!}
                 </div>
             </div>
         </div>

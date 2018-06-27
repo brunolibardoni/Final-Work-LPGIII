@@ -19,11 +19,7 @@ Route::resource('student', 'StudentController');
 
 Route::resource('course', 'CourseController');
 
-Route::resource('admin', 'CourseController');
-
-Route::resource('enrolment', 'EnrolmentController');
-
-
+Route::resource('user', 'CourseController');
 
 
 Auth::routes();
