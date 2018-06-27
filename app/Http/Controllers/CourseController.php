@@ -21,6 +21,8 @@ class CourseController extends Controller
 
         if ($user->admin) {
             return view('admin/course/index' ,['course'=>$course]);
+        }else{
+            echo'vc nao é um adm';            
         }
         
 
