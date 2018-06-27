@@ -19,6 +19,9 @@ Route::resource('student', 'StudentController');
 
 Route::resource('course', 'CourseController');
 
+Route::resource('enrolment', 'EnrolmentController');
+
+
 
 
 Auth::routes();

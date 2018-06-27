@@ -19,5 +19,11 @@ class StudentController extends Controller
         return view('student/index' ,['student'=>$user]);
     }
 
+    public function create()
+    {
+        return view('student/new');
+
+    }
+
 
 }
