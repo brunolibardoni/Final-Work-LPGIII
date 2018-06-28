@@ -15,11 +15,13 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
+
 Route::resource('student', 'StudentController');
 
 Route::resource('course', 'CourseController');
 
 Route::resource('user', 'CourseController');
+
 
 
 Auth::routes();

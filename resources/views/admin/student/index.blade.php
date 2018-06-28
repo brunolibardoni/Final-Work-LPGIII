@@ -79,7 +79,7 @@
                         <tr>   
                             <th>Managerial</th>
                             @foreach($student as $u)
-                                    <td><a href="/state/{{ $u->id }}/edit" class="btn btn-success">Manager</a><a href="/state/{{ $u->id }}/delete" class="btn btn-warning">User</a><a href="/state/{{ $u->id }}/delete" class="btn btn-danger">Delete</a></td>
+                                    <td><a href="/student/{{ $u->id }}/update" class="btn btn-success">Manager</a><a href="/state/{{ $u->id }}/delete" class="btn btn-warning">User</a><a href="/state/{{ $u->id }}/delete" class="btn btn-danger">Delete</a></td>
                             @endforeach
                         </tr>                   
                     </table>

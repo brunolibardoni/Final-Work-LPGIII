@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Session\Session;
     
@@ -31,6 +32,13 @@ class StudentController extends Controller
             \Session::flash('status', 'You do not have permission to access Student');
             return view('user/student/index' ,['course'=>$course]);
         }
+    }
+
+    public function update($id)
+    {
+        
+  
+        return view('admin/student.index', ['student' => $student]);
 
 
     }
