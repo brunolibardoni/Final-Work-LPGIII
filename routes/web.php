@@ -18,6 +18,8 @@ Route::get('/', function () {
 
 Route::resource('student', 'StudentController');
 
+Route::get('/validar/{id}/updateAdmin', 'StudentController@updateAdmin');
+
 Route::resource('course', 'CourseController');
 
 Route::resource('user', 'CourseController');

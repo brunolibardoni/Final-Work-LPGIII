@@ -7,9 +7,8 @@
             <div class="card">
                 <div class="card-header">
                     <h3>All Courses</h3>
-                    <a href="/city/create" class="float-right btn btn-success">Enrollment</a><br><br>
-
                 </div>
+                
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-danger">
@@ -51,7 +50,7 @@
                         <tr>   
                             <th>Options</th>
                             @foreach($course as $u)
-                                    <td><a href="/state/{{ $u->id }}/delete" class="btn btn-warning">Edit</a><a href="/state/{{ $u->id }}/delete" class="btn btn-danger">Delete</a></td>
+                                    <td><a href="/state/{{ $u->id }}/delete" class="btn btn-success">Enroll</a></td>
                             @endforeach
                         </tr> 
 

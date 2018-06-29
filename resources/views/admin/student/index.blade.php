@@ -8,10 +8,7 @@
                 <div class="card-header">
                     <h3>All Students</h3>
                     <a href="/course" class="float-right btn btn-success">All Courses</a>
-                    <br><br><a href="/course/index" class="float-right btn btn-success">All Enrolment</a><br><br>
-
-                    
-
+                    <br><br><a href="/course/index" class="float-right btn btn-success">All Enrolment</a><br><br>     
                 </div>
         
 
@@ -77,9 +74,9 @@
                             @endforeach
                         </tr>
                         <tr>   
-                            <th>Managerial</th>
+                         <th>Managerial</th>
                             @foreach($student as $u)
-                                    <td><a href="/student/{{ $u->id }}/update" class="btn btn-success">Manager</a><a href="/state/{{ $u->id }}/delete" class="btn btn-warning">User</a><a href="/state/{{ $u->id }}/delete" class="btn btn-danger">Delete</a></td>
+                                    <td><a href="/validar/{{ $u->id }}/updateAdmin" class="btn btn-success">Manager</a><a href="/state/{{ $u->id }}/delete" class="btn btn-warning">User</a><a href="/state/{{ $u->id }}/delete" class="btn btn-danger">Delete</a></td>
                             @endforeach
                         </tr>                   
                     </table>

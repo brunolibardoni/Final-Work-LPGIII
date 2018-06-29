@@ -34,12 +34,20 @@ class StudentController extends Controller
         }
     }
 
-    public function update($id)
+    public function updateAdmin($id)
     {
-        
-  
-        return view('admin/student.index', ['student' => $student]);
+        $user = User::findOrFail($id);
 
+        $student = User::paginate(3);
+
+
+        $user->admin = false;
+        $user->save();
+
+        \Session::flash('status', 'Success. The user became an administrator!');
+        return view('admin/student/index' ,['student'=>$student]);
+
+        
 
     }
 
