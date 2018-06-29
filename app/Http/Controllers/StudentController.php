@@ -40,15 +40,51 @@ class StudentController extends Controller
 
         $student = User::paginate(3);
 
+        if ($user->admin==true){
+            \Session::flash('error', 'Error. The user already an administrator!');
+            return redirect('/student');
 
-        $user->admin = false;
-        $user->save();
 
-        \Session::flash('status', 'Success. The user became an administrator!');
-        return view('admin/student/index' ,['student'=>$student]);
-
-        
-
+        }else{
+            $user->admin = true;
+            $user->save();
+            \Session::flash('status', 'Success. The user became an administrator! :)');
+            return redirect('/student');
+        }
     }
 
+    public function updateUser($id)
+    {
+        $user = User::findOrFail($id);
+
+        $student = User::paginate(3);
+
+        if ($user->admin == false){
+            \Session::flash('error', 'Error. The user already an User!');
+            return redirect('/student');
+
+
+        }else{
+            $user->admin = false;
+            $user->save();
+            \Session::flash('status', 'Success. The administrator became an User! :(');
+            return redirect('/student');
+        }
+    }
+
+    public function destroy($id)
+    {
+        $student = User::findOrFail($id);
+
+        if($student->admin == true){
+            \Session::flash('error', 'Error. You can not remove an administrator!');
+            return redirect('/student');       
+         }else{ 
+
+        $student->delete();
+
+        \Session::flash('status', 'Success. The student was removed!');
+        return redirect('/student');
+        }
+    }
 }

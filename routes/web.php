@@ -20,9 +20,24 @@ Route::resource('student', 'StudentController');
 
 Route::get('/validar/{id}/updateAdmin', 'StudentController@updateAdmin');
 
+Route::get('/validar/{id}/updateUser', 'StudentController@updateUser');
+
+Route::get('/exclusao/{id}/del', 'StudentController@destroy');
+
+Route::get('/exclusaoC/{id}/del', 'CourseController@destroy');
+
+
+
+Route::get('/course/{id}/edit', 'CourseController@edit');
+
+
+
 Route::resource('course', 'CourseController');
 
 Route::resource('user', 'CourseController');
+
+Route::view('/admin/student/index', 'student.index');
+
 
 
 

@@ -19,6 +19,13 @@
                         </div>
                     @endif
 
+                    <div class="card-body">
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
                     <table class="table">
                         <tr>
                             <th>ID</th>
@@ -76,9 +83,14 @@
                         <tr>   
                          <th>Managerial</th>
                             @foreach($student as $u)
-                                    <td><a href="/validar/{{ $u->id }}/updateAdmin" class="btn btn-success">Manager</a><a href="/state/{{ $u->id }}/delete" class="btn btn-warning">User</a><a href="/state/{{ $u->id }}/delete" class="btn btn-danger">Delete</a></td>
+                                    <td><a href="/validar/{{ $u->id }}/updateAdmin" class="btn btn-success">Manager</a><a href="/validar/{{ $u->id }}/updateUser" class="btn btn-warning">User</a></td>
                             @endforeach
-                        </tr>                   
+                        </tr>
+                        <th>Options</th>
+                            @foreach($student as $u)
+                                    <td><a href="/exclusao/{{ $u->id }}/del" class="btn btn-danger">Delete</a></td>
+                            @endforeach
+                        </tr>                     
                     </table>
 
                     {!! $student->links()!!}

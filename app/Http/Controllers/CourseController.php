@@ -25,10 +25,7 @@ class CourseController extends Controller
             return view('admin/course/index' ,['course'=>$course]);
         }else{
             return view('user/student/index' ,['course'=>$course]);
-        }
-        
-
-        
+        }     
     }
 
     public function create()
@@ -45,11 +42,7 @@ class CourseController extends Controller
             \Session::flash('status', 'You do not have permission to access New Course');
 
             return view('user/student/index',['course' =>$course]);
-
         }
-
-
-    
     }
 
     public function store(Request $request) 
@@ -60,13 +53,44 @@ class CourseController extends Controller
         $p->maximum = $request->input('maximum');
         
         if ($p->save()) {
-            \Session::flash('status', 'Curso criado com sucesso.');
+            \Session::flash('status', 'Success.Course was created.');
             return redirect('/course');
         } else {
-            \Session::flash('status', 'Ocorreu um erro ao criar o Curso.');
+            \Session::flash('status', 'Error.Course was not created.');
             return view('course.new');
         }
     }
 
+    public function update(Request $request, $id) {
+        $course = Course::findOrFail($id);
+
+        $course->course_name = $request->input('course_name');
+        $course->menu = $request->input('menu');
+        $course->maximum = $request->input('maximum');
+        
+        if ($course->save()) {
+            \Session::flash('status', 'Success.Course has been updated.');
+            return redirect('/course');
+        } else {
+            \Session::flash('status', 'Error. Error to update the course.');
+            return view('admin/course.index', ['course' => $course]);
+        }
+    }
+
+    public function edit($id) {
+        $course = Course::findOrFail($id);
+
+
+        return view('admin/course/edit', ['course' => $course]);
+    }
+
+    public function destroy($id)
+    {
+        $course = Course::findOrFail($id);
+        $course->delete();
+
+        \Session::flash('status', 'Success. The course was removed!');
+        return redirect('/course');
+    }
 
 }
