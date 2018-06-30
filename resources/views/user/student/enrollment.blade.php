@@ -20,7 +20,7 @@
                     <table class="table">
                         <tr>
                             <th>ID</th>
-                            @foreach($enrollment as $u)
+                            @foreach($student->courses as $u)
                                 <td>{{ $u->id }}</td>
                                 
                             @endforeach

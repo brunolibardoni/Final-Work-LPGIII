@@ -50,7 +50,7 @@
                         <tr>   
                             <th>Options</th>
                             @foreach($course as $u)
-                                    <td><a href="/state/{{ $u->id }}/delete" class="btn btn-success">Enroll</a></td>
+                                    <td><a href="/enroll/{id}" class="btn btn-success">Enroll</a></td>
                             @endforeach
                         </tr> 
 

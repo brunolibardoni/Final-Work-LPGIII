@@ -7,7 +7,7 @@ use App\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
     
-class CourseController extends Controller
+class EnrollmentController extends Controller
 {
     public function __construct()
     {
@@ -19,9 +19,11 @@ class CourseController extends Controller
         $user = Auth::user();
 
         $course = Course::paginate(1);
-        $student = User::paginate(1);
+
+
+        $student = User::find(1);
         
-        return view('user/student/enrollment' ,['course'=>$course]);
+        return view('user/student/enrollment' ,['student'=>$student]);
 
 
     }
