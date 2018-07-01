@@ -70,15 +70,21 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="cpf" class="col-md-4 col-form-label text-md-right">{{ __('CPF') }}</label>
+                            <label for="cpf" class="col-md-4 col-form-label text-md-right">{{ __('CPF - (Numbers Only)') }}</label>
 
                             <div class="col-md-6">
-                                <input id="cpf" type="text" class="form-control" name="cpf" required>
+                                <input id="cpf" type="number" class="form-control{{ $errors->has('cpf') ? ' is-invalid' : '' }}" name="cpf" required>
+
+                                @if ($errors->has('cpf'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('cpf') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="rg" class="col-md-4 col-form-label text-md-right">{{ __('RG') }}</label>
+                            <label for="rg" class="col-md-4 col-form-label text-md-right">{{ __('RG - (Numbers Only)') }}</label>
 
                             <div class="col-md-6">
                                 <input id="rg" type="number" class="form-control" name="rg" required>

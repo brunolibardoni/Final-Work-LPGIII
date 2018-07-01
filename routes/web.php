@@ -31,6 +31,14 @@ Route::get('/enroll/{id}', 'EnrollmentController@list');
 Route::get('/validar/{id}/matricula', 'EnrollmentController@validate');
 
 
+Route::get('/subscription', 'EnrollmentController@index');
+
+Route::get('/enroll/{id}/admin', 'EnrollmentController@list2');
+
+Route::get('/enrollStudent/{id}/{idStudent}', 'EnrollmentController@list3');
+
+
+
 
 Route::get('/enroll', 'EnrollmentController@index');
 

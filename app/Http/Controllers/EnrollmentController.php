@@ -21,9 +21,14 @@ class EnrollmentController extends Controller
 
         if($user->admin){
 
-                $student = DB::table('course_user')->get();
-     
-                return view('admin/course/enroll',['student' =>$student]);
+                //$student = DB::table('course_user')->get();
+
+                
+                $users = User::with('courses')->get();
+
+               // dd($courses);
+                return view('admin/course/enroll',['users' =>$users]);
+                                                
       
         }else{
             $user = Auth::user();
@@ -55,22 +60,49 @@ class EnrollmentController extends Controller
         return view('user/student/enrollment',['student' =>$student]);
     }
 
-    public function validate($id){
+    //public function validate($id){
 
-        $user = User::findOrFail($id);
+        //$user = User::findOrFail($id);
 
-        if ($user->admin==true){
-            \Session::flash('error', 'Error. The user already an administrator!');
-            return redirect('/student');
+        //$student = DB::table('course_user ')->get();
 
 
-        }else{
-            $user->admin = true;
-            $user->save();
-            \Session::flash('status', 'Success. The user became an administrator! :)');
-            return redirect('/student');
-        }
+        //if ($user->admin==true){
+            //\Session::flash('error', 'Error. The user already an administrator!');
+            //return redirect('/student');
+
+
+       // }else{
+           // $user->admin = true;
+           // $user->save();
+           // \Session::flash('status', 'Success. The user became an administrator! :)');
+            //return redirect('/student');
+        //}
+    //}
+
+    public function List2($id)
+    {
+        $student = User::find($id);
+
+        $course = Course::paginate(1);
+
+        return view('admin/student/enrollStudent',['students' =>$student], ['course' =>$course]);
     }
+
+    public function List3($idC,$idS)
+    {
+        $student = User::find($idS);
+
+    
+
+        $student->courses()->attach($idC);
+
+
+        return view('/home');
+    }
+
+
+    
 
 
 }

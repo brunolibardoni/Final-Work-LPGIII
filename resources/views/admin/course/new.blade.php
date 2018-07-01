@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="form-group row">
-                            {{ Form::label(' ', 'Course menu: ', ['class' => 'col-sm-2 col-form-label col-form-label-sm']) }}
+                            {{ Form::label(' ', 'Menu: ', ['class' => 'col-sm-2 col-form-label col-form-label-sm']) }}
                             <div class="col-sm-10">
                                 {{ Form::text('menu', null, ['class' => 'form-control form-control-sm'] ) }}
                             </div>
