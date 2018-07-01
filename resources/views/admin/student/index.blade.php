@@ -8,7 +8,7 @@
                 <div class="card-header">
                     <h3>All Students</h3>
                     <a href="/course" class="float-right btn btn-success">All Courses</a>
-                    <br><br><a href="/student/" class="float-right btn btn-success">All Enrolment</a><br><br>     
+                    <br><br><a href="/enroll/" class="float-right btn btn-success">All Enrolment</a><br><br>     
                 </div>
         
 
@@ -88,7 +88,8 @@
                         </tr>
                         <th>Options</th>
                             @foreach($student as $u)
-                                    <td><a href="/exclusao/{{ $u->id }}/del" class="btn btn-danger">Delete</a></td>
+                                    <td><a href="/exclusao/{{ $u->id }}/del" class="btn btn-danger">Delete</a><a href="/exclusao/{{ $u->id }}/del" class="btn btn-success">Enroll</a></td>
+
                             @endforeach
                         </tr>                     
                     </table>
