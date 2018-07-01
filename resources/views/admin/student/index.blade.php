@@ -8,7 +8,7 @@
                 <div class="card-header">
                     <h3>All Students</h3>
                     <a href="/course" class="float-right btn btn-success">All Courses</a>
-                    <br><br><a href="/course/index" class="float-right btn btn-success">All Enrolment</a><br><br>     
+                    <br><br><a href="/student/" class="float-right btn btn-success">All Enrolment</a><br><br>     
                 </div>
         
 

@@ -21,7 +21,7 @@
                         <tr>
                             <th>ID</th>
                             @foreach($student->courses as $u)
-                                <td>{{ $u->pivot->id }}</td>
+                                <td>{{ $u->course_name}}</td>
                                 
                             @endforeach
                         </tr>

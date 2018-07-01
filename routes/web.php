@@ -26,7 +26,13 @@ Route::get('/exclusao/{id}/del', 'StudentController@destroy');
 
 Route::get('/exclusaoC/{id}/del', 'CourseController@destroy');
 
-Route::get('/enroll/{id}', 'EnrollmentController@index');
+Route::get('/enroll/{id}', 'EnrollmentController@list');
+
+
+
+Route::get('/student', 'EnrollmentController@index');
+
+
 
 
 

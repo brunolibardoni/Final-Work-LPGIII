@@ -18,30 +18,37 @@ class EnrollmentController extends Controller
     {
         $user = Auth::user();
 
-        $course = Course::paginate(1);
+        $idStudent = Auth::user()->id;
 
+        $student = User::find($idStudent);
 
-        $student = User::find(1);
+ 
+            return view('user/student/enroll',['student' =>$student]);
+
         
-        return view('user/student/enrollment' ,['student'=>$student]);
 
 
     }
 
-    public function create()
+    public function List($idC)
     {
-        $user = Auth::user();
+        $idStudent = Auth::user()->id;
 
-        $course = Course::paginate(1);
+        $student = User::find($idStudent);
 
-        if ($user->admin){
-            return view('admin/course/new',['course' =>$course]);
-        }else if (($user->admin)==0){
-            $course = Course::paginate(1);
+        $course = Course::find($idC);
 
-            \Session::flash('status', 'You do not have permission to access New Course');
 
-            return view('user/student/index',['course' =>$course]);
-        }
+        //dd($student->courses);
+
+
+        $student->courses()->attach($idC);
+
+        //$enrol;
+       // $enrol->course->attach(2,$id);
+
+
+        return view('user/student/enrollment',['student' =>$student]);
     }
+
 }

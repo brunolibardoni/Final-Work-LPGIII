@@ -28,6 +28,6 @@ class User extends Authenticatable
     ];
 
     public function courses(){
-        return $this->belongsToMany(Course::class);
+        return $this->belongsToMany(Course::class,'course_user', 'user_id','course_id')->withPivot('authorized','id')->withTimestamps();;
     }
 }

@@ -7,6 +7,8 @@
             <div class="card">
                 <div class="card-header">
                     <h3>All Courses</h3>
+                    <a href="/student/" class="float-right btn btn-success">My Subscriptions</a><br><br>
+
                 </div>
                 
                 <div class="card-body">
@@ -50,7 +52,7 @@
                         <tr>   
                             <th>Options</th>
                             @foreach($course as $u)
-                                    <td><a href="/enroll/{id}" class="btn btn-success">Enroll</a></td>
+                                    <td><a href="/enroll/{{ $u->id }}/" class="btn btn-success">Enroll</a></td>
                             @endforeach
                         </tr> 
 

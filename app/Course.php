@@ -11,6 +11,6 @@ class Course extends Model
     protected $fillable = ['course_name', 'menu', 'maximum',];
 
     public function users(){
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'course_user', 'course_id','user_id')->withPivot('authorized','id')->withTimestamps();
     }
 }
