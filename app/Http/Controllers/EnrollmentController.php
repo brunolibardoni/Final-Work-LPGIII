@@ -42,7 +42,7 @@ class EnrollmentController extends Controller
 
 
         if($student->courses->contains($course)){
-            \Session::flash('erro', 'Você já está cadastrado neste curso!');
+            \Session::flash('erro', 'You are already enrolled in this course!');
 
             return redirect('/course');
         }else{
@@ -78,11 +78,11 @@ class EnrollmentController extends Controller
         $course = Course::find($idC);
 
         if($student->courses->contains($course)){
-            \Session::flash('erro', 'Você já está cadastrado neste curso!');
+            \Session::flash('erro', 'You are already enrolled in this course!');
 
             return redirect('/user');
         }else{
-            \Session::flash('success', 'Registration made. ');
+            \Session::flash('success', 'Registration made. You must wait the administrator acept your enrollment.');
             $student->courses()->attach($idC);
 
             $user = User::find($idStudent)->courses()->updateExistingPivot($idC,['authorized' => 1]);
@@ -99,6 +99,8 @@ class EnrollmentController extends Controller
         $course = Course::find($idC);
 
         $student->courses()->detach($idC);
+
+        \Session::flash('success', 'The enrollment has been deleted. ');
 
         return redirect('/user');
 

@@ -53,10 +53,10 @@ class CourseController extends Controller
         $p->maximum = $request->input('maximum');
         
         if ($p->save()) {
-            \Session::flash('status', 'Success.Course was created.');
+            \Session::flash('success', 'Success.Course was created.');
             return redirect('/course');
         } else {
-            \Session::flash('status', 'Error.Course was not created.');
+            \Session::flash('erro', 'Error.Course was not created.');
             return view('course.new');
         }
     }
