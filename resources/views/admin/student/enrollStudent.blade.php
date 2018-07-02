@@ -8,13 +8,20 @@
                 <div class="card-header">
                     <h3>All Courses</h3>
                     <a href="/student" class="float-right btn btn-success">All Students</a><br><br>
-                    <a href="/enroll/" class="float-right btn btn-success">All Enrolment</a><br><br>     
+                    <a href="/enroll/" class="float-right btn btn-success">All Enrollments</a><br><br>     
 
                 </div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
+                        </div>
+                    @endif
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-danger">
+                            {{ session('erro') }}
                         </div>
                     @endif
 

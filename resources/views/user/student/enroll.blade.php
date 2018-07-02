@@ -7,11 +7,20 @@
             <div class="card">
                 <div class="card-header">
                     <h3>All my Subscriptions</h3>
+                    <a href="/subscription/" class="float-right btn btn-success">Courses</a><br><br>
+
                 </div>
                 
                 <div class="card-body">
-                    @if (session('status'))
+                    @if (session('erro'))
                         <div class="alert alert-danger">
+                            {{ session('erro') }}
+                        </div>
+                    @endif
+
+                    <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-sucess">
                             {{ session('status') }}
                         </div>
                     @endif

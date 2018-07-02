@@ -12,12 +12,19 @@
                 </div>
                 
                 <div class="card-body">
-                    @if (session('status'))
+                    @if (session('erro'))
                         <div class="alert alert-danger">
-                            {{ session('status') }}
+                            {{ session('erro') }}
                         </div>
                     @endif
                    
+                    <div class="card-body">
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
 
                     <table class="table">
                         <tr>

@@ -20,16 +20,9 @@ class EnrollmentController extends Controller
         $user = Auth::user();
 
         if($user->admin){
-
-                //$student = DB::table('course_user')->get();
-
                 
-                $users = User::with('courses')->get();
-
-               // dd($courses);
-                return view('admin/course/enroll',['users' =>$users]);
-                                                
-      
+                $users = User::with('courses')->orderBy('student_name')->get();
+                return view('admin/course/enroll',['users' =>$users]);                       
         }else{
             $user = Auth::user();
             $idStudent = Auth::user()->id;
@@ -48,37 +41,32 @@ class EnrollmentController extends Controller
         $course = Course::find($idC);
 
 
-        //dd($student->courses);
+        if($student->courses->contains($course)){
+            \Session::flash('erro', 'Você já está cadastrado neste curso!');
 
+            return redirect('/course');
+        }else{
+            \Session::flash('success', 'Registration made. ');
+            $student->courses()->attach($idC);
 
-        $student->courses()->attach($idC);
-
-        //$enrol;
-       // $enrol->course->attach(2,$id);
-
-
-        return view('user/student/enrollment',['student' =>$student]);
+            return redirect('/course');
+        }
     }
 
-    //public function validate($id){
-
-        //$user = User::findOrFail($id);
-
-        //$student = DB::table('course_user ')->get();
 
 
-        //if ($user->admin==true){
-            //\Session::flash('error', 'Error. The user already an administrator!');
-            //return redirect('/student');
+    public function authorized($idU,$idC){
+        
+        $course = Course::find($idC);
+
+        $user = User::find($idU)->courses()->updateExistingPivot($idC,['authorized' => 1]);
+        \Session::flash('success', 'The student enrollment was approved!');
+
+        return redirect('/enroll');
+    }
 
 
-       // }else{
-           // $user->admin = true;
-           // $user->save();
-           // \Session::flash('status', 'Success. The user became an administrator! :)');
-            //return redirect('/student');
-        //}
-    //}
+
 
     public function List2($id)
     {

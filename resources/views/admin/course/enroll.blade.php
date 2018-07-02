@@ -13,16 +13,13 @@
                 </div>
                 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-danger">
-                            {{ session('status') }}
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
                         </div>
                     @endif
                    
-
                     <table class="table">
-                       
-
                         <tr>
                             <th>Student Name</th>
                             <th>Course Name</th>
@@ -37,7 +34,7 @@
                                     <td>{{ $course->course_name }}</td>                                                                                                                   
                                     <td>{{ $course->pivot->authorized }}</td>
                                     @if ($course->pivot->authorized == 0)
-                                        <td><a href="/enrollStudent/{{ $course->pivot->id }}" class="btn btn-success">Authorize</a></td>                                
+                                        <td><a href="/enrollAuthorized/{{ $course->pivot->user_id }}/{{ $course->pivot->course_id }}" class="btn btn-success">Authorize</a></td>                                
                                     @else
                                         <td></td>
                                     @endif
@@ -45,10 +42,7 @@
                                 @endforeach
                                 </tr>
                             @endforeach                        
-
-                        
                     </table>
-
                 </div>
             </div>
         </div>
