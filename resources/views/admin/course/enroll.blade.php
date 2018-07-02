@@ -35,9 +35,11 @@
                                     <td>{{ $course->pivot->authorized }}</td>
                                     @if ($course->pivot->authorized == 0)
                                         <td><a href="/enrollAuthorized/{{ $course->pivot->user_id }}/{{ $course->pivot->course_id }}" class="btn btn-success">Authorize</a></td>                                
+                        
                                     @else
                                         <td></td>
                                     @endif
+                                    <td><a href="/enrollDel/{{ $course->pivot->user_id }}/{{ $course->pivot->course_id }}" class="btn btn-danger">Delete</a></td>
                                 </tr>
                                 @endforeach
                                 </tr>

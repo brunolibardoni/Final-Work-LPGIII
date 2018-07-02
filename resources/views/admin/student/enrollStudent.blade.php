@@ -58,7 +58,7 @@
                         <tr>   
                             <th>Options</th>
                             @foreach($course as $u)
-                                    <td><a href="/enrollStudent/{{ $u->id }}/{{ $student->id }}" class="btn btn-success">Enroll Student</a></td>
+                                    <td><a href="/enrollStudent/{{ $students->id }}/{{ $u->id }}/" class="btn btn-success">Enroll Student</a></td>
                             @endforeach
                         </tr> 
 

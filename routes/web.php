@@ -12,8 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('auth/login');
+    return view('welcome');
 });
+
+
 
 
 Route::resource('student', 'StudentController');
@@ -35,9 +37,13 @@ Route::get('/subscription', 'EnrollmentController@index');
 
 Route::get('/enroll/{id}/admin', 'EnrollmentController@list2');
 
-Route::get('/enrollStudent/{id}/{idStudent}', 'EnrollmentController@list3');
+Route::get('/enrollStudent/{idStudent}/{idC}', 'EnrollmentController@list3');
 
 Route::get('/enrollAuthorized/{idU}/{idC}', 'EnrollmentController@authorized');
+
+
+Route::get('/enrollDel/{idU}/{idC}', 'EnrollmentController@destroy');
+
 
 
 
@@ -53,6 +59,7 @@ Route::get('/course/{id}/edit', 'CourseController@edit');
 
 
 Route::resource('course', 'CourseController');
+
 
 Route::resource('user', 'CourseController');
 

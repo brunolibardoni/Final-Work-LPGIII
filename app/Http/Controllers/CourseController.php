@@ -69,10 +69,10 @@ class CourseController extends Controller
         $course->maximum = $request->input('maximum');
         
         if ($course->save()) {
-            \Session::flash('status', 'Success.Course has been updated.');
+            \Session::flash('success', 'Success.Course has been updated.');
             return redirect('/course');
         } else {
-            \Session::flash('status', 'Error. Error to update the course.');
+            \Session::flash('erro', 'Error. Error to update the course.');
             return view('admin/course.index', ['course' => $course]);
         }
     }
@@ -89,7 +89,7 @@ class CourseController extends Controller
         $course = Course::findOrFail($id);
         $course->delete();
 
-        \Session::flash('status', 'Success. The course was removed!');
+        \Session::flash('success', 'Success. The course was removed!');
         return redirect('/course');
     }
 

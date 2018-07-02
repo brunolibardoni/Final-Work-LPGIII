@@ -32,7 +32,7 @@ class EnrollmentController extends Controller
         }
     }
 
-    public function List($idC)
+    public function list($idC)
     {
         $idStudent = Auth::user()->id;
 
@@ -53,8 +53,6 @@ class EnrollmentController extends Controller
         }
     }
 
-
-
     public function authorized($idU,$idC){
         
         $course = Course::find($idC);
@@ -65,10 +63,7 @@ class EnrollmentController extends Controller
         return redirect('/enroll');
     }
 
-
-
-
-    public function List2($id)
+    public function list2($id)
     {
         $student = User::find($id);
 
@@ -77,20 +72,38 @@ class EnrollmentController extends Controller
         return view('admin/student/enrollStudent',['students' =>$student], ['course' =>$course]);
     }
 
-    public function List3($idC,$idS)
+    public function list3($idStudent,$idC)
     {
-        $student = User::find($idS);
+        $student = User::find($idStudent);
+        $course = Course::find($idC);
 
-    
+        if($student->courses->contains($course)){
+            \Session::flash('erro', 'Você já está cadastrado neste curso!');
 
-        $student->courses()->attach($idC);
+            return redirect('/user');
+        }else{
+            \Session::flash('success', 'Registration made. ');
+            $student->courses()->attach($idC);
+
+            $user = User::find($idStudent)->courses()->updateExistingPivot($idC,['authorized' => 1]);
+            return redirect('/user');
+        }
 
 
         return view('/home');
     }
 
+    public function destroy ($idStudent,$idC){
+        
+        $student = User::find($idStudent);
+        $course = Course::find($idC);
 
-    
+        $student->courses()->detach($idC);
+
+        return redirect('/user');
+
+
+    }
 
 
 }

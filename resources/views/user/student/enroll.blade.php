@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3>All my Subscriptions</h3>
-                    <a href="/subscription/" class="float-right btn btn-success">Courses</a><br><br>
+                    <a href="/course/" class="float-right btn btn-info">Courses</a><br><br>
 
                 </div>
                 
