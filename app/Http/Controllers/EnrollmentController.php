@@ -46,7 +46,7 @@ class EnrollmentController extends Controller
 
             return redirect('/course');
         }else{
-            \Session::flash('success', 'Registration made. ');
+            \Session::flash('success', 'Registration made. You must wait the administrator acept your enrollment. ');
             $student->courses()->attach($idC);
 
             return redirect('/course');
@@ -82,7 +82,7 @@ class EnrollmentController extends Controller
 
             return redirect('/user');
         }else{
-            \Session::flash('success', 'Registration made. You must wait the administrator acept your enrollment.');
+            \Session::flash('success', 'Registration made.');
             $student->courses()->attach($idC);
 
             $user = User::find($idStudent)->courses()->updateExistingPivot($idC,['authorized' => 1]);
