@@ -16,9 +16,14 @@ Route::get('/', function () {
 });
 
 
+########################## Resources ##################
+Route::resource('course', 'CourseController');
 
+Route::resource('user', 'CourseController');
 
 Route::resource('student', 'StudentController');
+
+########################## GET  ######################
 
 Route::get('/validar/{id}/updateAdmin', 'StudentController@updateAdmin');
 
@@ -32,7 +37,6 @@ Route::get('/enroll/{id}', 'EnrollmentController@List');
 
 Route::get('/validar/{id}/matricula', 'EnrollmentController@validate');
 
-
 Route::get('/subscription', 'EnrollmentController@index');
 
 Route::get('/enroll/{id}/admin', 'EnrollmentController@list2');
@@ -41,33 +45,19 @@ Route::get('/enrollStudent/{idStudent}/{idC}', 'EnrollmentController@list3');
 
 Route::get('/enrollAuthorized/{idU}/{idC}', 'EnrollmentController@authorized');
 
-
 Route::get('/enrollDel/{idU}/{idC}', 'EnrollmentController@destroy');
-
-
-
-
 
 Route::get('/enroll', 'EnrollmentController@index');
 
-
-
-
-
 Route::get('/course/{id}/edit', 'CourseController@edit');
 
+Route::get('/home', 'HomeController@index')->name('home');
 
-
-Route::resource('course', 'CourseController');
-
-
-Route::resource('user', 'CourseController');
+#################### View ##########################
 
 Route::view('/admin/student/index', 'student.index');
 
 
-
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
